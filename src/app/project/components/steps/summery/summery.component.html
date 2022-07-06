@@ -1,0 +1,49 @@
+<p-card>
+    <ng-template pTemplate="title">
+        Summery
+    </ng-template>
+    <ng-template pTemplate="subtitle">
+        Please review all information and then submit it.
+    </ng-template>
+    <ng-template pTemplate="content">
+        <div class="summery-preview">
+            <div class="user-avatar" [ngStyle]="{'background-image': 'url(' + project.image + ')'}"></div>
+            <div class="data-field">
+                <h4>amount</h4>
+                <p>{{project.amount}}</p>
+            </div>
+            <div class="data-field">
+                <h4>status</h4>
+                <p>{{project.status}}</p>
+            </div>
+            <div class="data-field">
+                <h4>date</h4>
+                <p>{{project.date | date:'shortDate'}}</p>
+            </div>
+            <div class="data-field">
+                <h4>source</h4>
+                <p>{{project.source}}</p>
+            </div>
+            <div class="data-field-person">
+                <div class="check-icon">
+                    <i class="pi pi-check"></i>
+                </div>
+                <div class="data-field-person-details">
+                    <p>{{project.person.firstName}}</p>
+                    <p>{{project.person.lastName}}</p>
+                    <p>{{project.person.country}}</p>
+                </div>
+
+            </div>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <p-divider></p-divider>
+        <div class="steps-footer-container">
+            <p-button label="Back" (onClick)="prevPage()" icon="pi pi-angle-left" class="p-button-secondary">
+            </p-button>
+            <button pButton (click)="submitPage()" class="p-button-success" label="Submit" icon="pi pi-check"
+                iconPos="right"></button>
+        </div>
+    </ng-template>
+</p-card>

@@ -1,0 +1,60 @@
+<div>
+    <p-card>
+        <ng-template pTemplate="title">
+            Information
+        </ng-template>
+        <ng-template pTemplate="subtitle">
+            Please fill all information and then press the next button.
+        </ng-template>
+        <ng-template pTemplate="content">
+            <form class="p-fluid formgrid grid" [formGroup]="formInformation">
+                <div class="field col-12 md:col-6">
+                    <label class="title-input" for="amount">Amount</label>
+                    <p-inputNumber formControlName="amount" inputId="amount" placeholder="amount must be number"
+                        [ngClass]="{'ng-dirty': (formInformation.controls['amount'].invalid && submitted) || (formInformation.controls['amount'].dirty && formInformation.controls['amount'].invalid)}">
+                    </p-inputNumber>
+                    <small
+                        *ngIf="(formInformation.controls['amount'].invalid && submitted) || (this.formInformation.controls['amount'].dirty && this.formInformation.controls['amount'].invalid)"
+                        class="p-error">amount is required.</small>
+                </div>
+                <div class="field col-12 md:col-6">
+                    <label class="title-input" for="status">Status</label>
+                    <p-dropdown formControlName="status" inputId="status" [options]="status"
+                        placeholder="Select a Status" [showClear]="true"
+                        [ngClass]="{'ng-dirty': (formInformation.controls['status'].invalid && submitted) || (formInformation.controls['status'].dirty && formInformation.controls['status'].invalid)}">
+                    </p-dropdown>
+                    <small
+                        *ngIf="(formInformation.controls['status'].invalid && submitted) || (this.formInformation.controls['status'].dirty && this.formInformation.controls['status'].invalid)"
+                        class="p-error">status is required.</small>
+                </div>
+                <div class="field col-12 md:col-6">
+                    <label class="title-input" for="date">Date</label>
+                    <p-calendar formControlName="date" inputId="date" placeholder="please pick your valid date"
+                        [minDate]="minDate" [maxDate]="maxDate" [readonlyInput]="true"
+                        [ngClass]="{'ng-dirty': (formInformation.controls['date'].invalid && submitted) || (formInformation.controls['date'].dirty && formInformation.controls['date'].invalid)}">
+                    </p-calendar>
+                    <small
+                        *ngIf="(formInformation.controls['date'].invalid && submitted) || (this.formInformation.controls['date'].dirty && this.formInformation.controls['date'].invalid)"
+                        class="p-error">date is required.</small>
+                </div>
+                <div class="field col-12">
+                    <label class="title-input" for="source">Source of fund</label>
+                    <textarea formControlName="source" inputId="source" pInputTextarea rows="5" cols="30"
+                        [ngClass]="{'ng-dirty': (formInformation.controls['source'].invalid && submitted) || (formInformation.controls['source'].dirty && formInformation.controls['source'].invalid)}"></textarea>
+                    <small
+                        *ngIf="(formInformation.controls['source'].invalid && submitted) || (this.formInformation.controls['source'].dirty && this.formInformation.controls['source'].invalid)"
+                        class="p-error">source is required.</small>
+                </div>
+            </form>
+        </ng-template>
+        <ng-template pTemplate="footer">
+            <p-divider></p-divider>
+            <div class="steps-footer-container">
+                <p-button label="Back" (onClick)="prevPage()" icon="pi pi-angle-left" class="p-button-secondary">
+                </p-button>
+
+                <p-button label="Next" (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right"></p-button>
+            </div>
+        </ng-template>
+    </p-card>
+</div>

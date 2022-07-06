@@ -1,0 +1,23 @@
+<p-card>
+    <ng-template pTemplate="title">
+        Upload Image
+    </ng-template>
+    <ng-template pTemplate="subtitle">
+        Please choose your image and upload it.
+    </ng-template>
+    <ng-template pTemplate="content">
+        <div class="upload-image">
+            <div class="image-preview" [ngStyle]="{'background-image': 'url(' + imageSrc + ')'}"></div>
+            <label for="filed" class="upload-button">Choose a Image</label>
+            <input type='file' id="filed" (change)="readURL($event);" hidden />
+        </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <p-divider></p-divider>
+        <div class="steps-footer-container">
+            <p></p>
+            <p-button label="Next" (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right"></p-button>
+        </div>
+    </ng-template>
+</p-card>
+<p-toast></p-toast>
